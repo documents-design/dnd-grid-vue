@@ -18,6 +18,7 @@ export const drop = (c) => {
       c.draggedItem !== null &&
       c.targetItem !== c.draggedItem
   ) {
+    c.$emit('swap', [c.draggedItem, c.targetItem]);
     performSwap(c, c.draggedItem, c.targetItem);
   } else {
     removeDragHolder(c);
@@ -65,8 +66,6 @@ export const removeDragHolder = (c) => {
   c.copiedItems.splice(c.draggedItem, 1);
   c.draggedItem = null;
 };
-
-
 
 export const cleanup = (c) => {
   (c.draggedItem = null),
