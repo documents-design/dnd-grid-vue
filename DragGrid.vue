@@ -38,8 +38,18 @@
       };
     },
     props: {
-      items: Array,
-      cloneFunction: Function,
+      items: {
+        type: Array,
+        default: () => [],
+      },
+      cloneFunction: {
+        type: Function,
+        default: a => JSON.parse(JSON.stringify(a))
+      },
+      avoidPerformingSwaps: {
+        type: Boolean,
+        default: false,
+      }
     },
     methods: {
       copyItems() {
